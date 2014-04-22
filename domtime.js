@@ -12,7 +12,7 @@ module.exports = function(pagerun){
                 if(httpData.responseCode === 200 &&
                     httpData.responseType === 'html' &&
                     responseContent !== undefined){
-                    httpData.responseContent = responseContent.replace(/<\/title>/i, '$&<script type="text/javascript" src="http://pagerun/domtime.js" charset="utf-8"></script>');
+                    httpData.responseContent = responseContent.replace(/<\/title>/i, '$&<script type="text/javascript" src="'+httpData.protocol+'//pagerun/domtime.js" charset="utf-8"></script>');
                 }
                 else if(httpData.type === 'request' && httpData.hostname === 'pagerun'){
                     switch(httpData.path){
