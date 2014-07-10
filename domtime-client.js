@@ -27,10 +27,12 @@ pagerun.newTask('domtime', function(){
 
     function loadTriggered() {
         var headerTime = domtimeHeaderEndTime - startTime;
+        var footerTime = domtimeFooterEndTime - startTime;
         var loadTime = (new Date()).getTime() - startTime;
         task.info({
             'url': location.href,
             'header': headerTime,
+            'footer': footerTime,
             'ready': readyTime,
             'load': loadTime
         });

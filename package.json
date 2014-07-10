@@ -1,6 +1,6 @@
 {
   "name": "pagerun-domtime",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Get dom time for pagerun.",
   "main": "domtime",
   "dependencies": {
