@@ -1,8 +1,9 @@
-(function(doc, win){
-    
-    pagerun.waitMe();
+pagerun.newTask('domtime', function(){
+    var task = this;
+    var doc = document;
+    var win = window;
 
-    var startTime, readyTime, loadTime;
+    var startTime, readyTime;
 
     startTime = (new Date()).getTime();
 
@@ -25,12 +26,15 @@
     }
 
     function loadTriggered() {
-        loadTime = (new Date()).getTime() - startTime;
-        pagerun.result('domtime', {
+        var headerTime = domtimeHeaderEndTime - startTime;
+        var loadTime = (new Date()).getTime() - startTime;
+        task.info({
+            'url': location.href,
+            'header': headerTime,
             'ready': readyTime,
             'load': loadTime
         });
-        pagerun.end();
+        task.end();
     }
     if (doc.addEventListener) {
         doc.addEventListener("DOMContentLoaded", DOMContentLoaded, false);
@@ -57,6 +61,4 @@
             })();
         }
     }
-
-    
-})(document, window);
+});
